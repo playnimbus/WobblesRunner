@@ -9,6 +9,7 @@ public class GravityBehavior : BasePlatformBehavior
         {
             // Turn gravity on or off, actual mechanics handled by wobbles movement script
             other.attachedRigidbody.useGravity = !other.attachedRigidbody.useGravity;
+            other.GetComponent<WobbleMovement>().flipGadgetSpawn();
  //           AudioManager.Play("Wobble_Gravity");
         }
     }

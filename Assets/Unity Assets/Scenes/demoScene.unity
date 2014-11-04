@@ -86,6 +86,7 @@ GameObject:
   - 124: {fileID: 522618074}
   - 92: {fileID: 522618073}
   - 81: {fileID: 522618072}
+  - 114: {fileID: 522618077}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -153,11 +154,23 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 522618071}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.30980015, y: 1.74430001, z: -8.23260021}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.41359997, y: -7.39349985, z: -16.4650002}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
-  m_Father: {fileID: 556598383}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &522618077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 522618071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c7883babeb9984da94d6dc648f40de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FollowGO: {fileID: 556598372}
 --- !u!1 &556598372
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,6 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa3bda0ffbf391488ceb2396a57df86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gadgetSpawn: {fileID: 976270063}
 --- !u!136 &556598378
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -283,7 +297,7 @@ ConstantForce:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 556598372}
   m_Enabled: 1
-  m_Force: {x: 140, y: 0, z: 0}
+  m_Force: {x: 280, y: 0, z: 0}
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
@@ -339,11 +353,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 556598372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.97539997, y: -8.09980011, z: 0}
+  m_LocalPosition: {x: -3.97539997, y: -9.68010044, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 976270064}
-  - {fileID: 522618076}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!1 &561767754
@@ -617,7 +630,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 33225e026ceba0649a27542cecf75df0, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3300000, guid: 33225e026ceba0649a27542cecf75df0, type: 2}
       propertyPath: m_Mesh
@@ -866,6 +879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f527181f11df60447bbdf87f83dee380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalNumOfChunks: 4
   wobble: {fileID: 556598372}
 --- !u!4 &1117014080
 Transform:
@@ -1045,7 +1059,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
 --- !u!1001 &1320255023
 Prefab:
   m_ObjectHideFlags: 0
@@ -1083,7 +1097,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1d27fbdcd338854439db25deee241da8, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8200000, guid: 1d27fbdcd338854439db25deee241da8, type: 2}
       propertyPath: Mute

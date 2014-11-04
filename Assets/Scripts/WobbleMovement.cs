@@ -9,6 +9,8 @@ public class WobbleMovement : MonoBehaviour
     float prevVerticalVelocity;
     Vector3 prevPosition;
 
+    public GameObject gadgetSpawn;
+
     // Unity functions
     void OnCollisionEnter(Collision collision)
     {
@@ -34,6 +36,7 @@ public class WobbleMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
+       
         prevVerticalVelocity = rigidbody.velocity.y;
 
         // If not moving forward, give bump to get over obstacle
@@ -44,7 +47,7 @@ public class WobbleMovement : MonoBehaviour
         prevPosition = transform.position;
 
         // Use raycast to turn around if it hits a wall
-        CheckForWallCollision();
+   //     CheckForWallCollision();
 
         // This checks if we are using gravity, and if not applies 
         // an opposite gravitational force
@@ -94,5 +97,9 @@ public class WobbleMovement : MonoBehaviour
     {
         constantForce.force = new Vector3(-constantForce.force.x, 0f);
         rigidbody.AddForce(-rigidbody.velocity.x + (constantForce.force.x > 0f ? 1.5f : -1.5f), 0f, 0f, ForceMode.VelocityChange);
+    }
+    public void flipGadgetSpawn()
+    {
+        gadgetSpawn.transform.localPosition = new Vector3(gadgetSpawn.transform.localPosition.x, gadgetSpawn.transform.localPosition.y * -1, gadgetSpawn.transform.localPosition.z);
     }
 }

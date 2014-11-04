@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ChunkSpawner : MonoBehaviour {
 
+    public int totalNumOfChunks;
+
     public GameObject wobble;
     float levelLength = 0;
 
@@ -18,7 +20,9 @@ public class ChunkSpawner : MonoBehaviour {
 
         if (wobble.transform.position.x > levelLength - 10)
         {
-            GameObject chunk = (GameObject)Instantiate(Resources.Load("Chunk1"));
+            int rand = Random.Range(1, totalNumOfChunks+1);
+
+            GameObject chunk = (GameObject)Instantiate(Resources.Load("Chunk" + rand.ToString()));
             chunk.transform.position = new Vector3(levelLength, 0, 0);
             levelLength += chunk.GetComponent<Chunk>().chunkLength;
             

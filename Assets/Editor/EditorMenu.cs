@@ -23,8 +23,7 @@ public class EditorMenu : EditorWindow {
             }
             else
             {
-                if ((BoxColliders[i].gameObject.transform.position.x + BoxColliders[i].center.x) - (BoxColliders[i].bounds.size.x /2) <
-                    ((lowestX.transform.position.x + lowestX.GetComponent<BoxCollider>().center.x) - (lowestX.GetComponent<BoxCollider>().bounds.size.x / 2)))
+                if ( EditorMenu.getLeftSide(BoxColliders[i].gameObject) < EditorMenu.getLeftSide(lowestX))
                 {
                     lowestX = BoxColliders[i].gameObject;
                 }
@@ -39,16 +38,15 @@ public class EditorMenu : EditorWindow {
             }
             else
             {
-                if ((BoxColliders[i].gameObject.transform.position.x + BoxColliders[i].center.x) + (BoxColliders[i].bounds.size.x / 2) >
-                    ((highestX.transform.position.x + highestX.GetComponent<BoxCollider>().bounds.center.x) + (highestX.GetComponent<BoxCollider>().bounds.size.x / 2)))
+                if (EditorMenu.getRightSide(BoxColliders[i].gameObject) > EditorMenu.getRightSide(highestX))
                 {
                     highestX = BoxColliders[i].gameObject;
                 }
             }
         }
 
-        float leftSide = ((lowestX.transform.position.x + lowestX.gameObject.GetComponent<BoxCollider>().center.x) - (lowestX.gameObject.GetComponent<BoxCollider>().size.x / 2));
-        float rightSide = ((highestX.transform.position.x + highestX.gameObject.GetComponent<BoxCollider>().center.x) + (highestX.gameObject.GetComponent<BoxCollider>().size.x / 2));
+        float leftSide = getLeftSide(lowestX);
+        float rightSide = getRightSide(highestX);
         chunk[0].gameObject.GetComponent<Chunk>().chunkLength = rightSide - leftSide;
 
         Debug.Log("HighestX: " + highestX.name + rightSide.ToString());
@@ -60,5 +58,14 @@ public class EditorMenu : EditorWindow {
 
         cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cube.transform.position = new Vector3(rightSide, highestX.transform.position.y, 0);
+    }
+
+    public static float getLeftSide(GameObject go)
+    {
+        return (go.transform.position.x + go.GetComponent<BoxCollider>().center.x) - (go.GetComponent<BoxCollider>().bounds.size.x / 2);
+    }
+    public static float getRightSide(GameObject go)
+    {
+        return (go.transform.position.x + go.GetComponent<BoxCollider>().center.x) + (go.GetComponent<BoxCollider>().bounds.size.x / 2);
     }
 }
