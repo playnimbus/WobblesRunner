@@ -66,7 +66,8 @@ public class WobbleGameActions : MonoBehaviour
             if (other.name == "SpeedPickup")
             {
                 scoreKeeper.addSpeedMult(1);
-                wobbleMovement.wobbleConstantForce.relativeForce += new Vector3(50, 0, 0);
+            //    wobbleMovement.wobbleConstantForce.relativeForce += new Vector3(50, 0, 0);
+                Time.timeScale += 0.2f;
                 GameObject.Destroy(other.gameObject);
 
                 GameObject aura = (GameObject)Instantiate(SpeedAura, transform.position - new Vector3(0,0.75f,0), SpeedAura.transform.rotation);
