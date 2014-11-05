@@ -6,6 +6,10 @@ public class WobbleGameActions : MonoBehaviour
     public GameObject Headgear;
     public GameObject DeathCloud;
     public GameObject WaterSplash;
+    public GameObject SpeedAura;
+
+    ScoreKeeper scoreKeeper;
+    WobbleMovement wobbleMovement;
     
     bool dead;    
     Rect worldBounds;
@@ -16,10 +20,13 @@ public class WobbleGameActions : MonoBehaviour
     //    CameraControl cc = Camera.main.GetComponent<CameraControl>();       
     //    if (cc) worldBounds = cc.CameraBounds;
  //       else worldBounds = new Rect(-100f, -100f, 200f, 200f);
+
+        scoreKeeper = GameObject.Find("GameController").GetComponent<ScoreKeeper>();
+        wobbleMovement = gameObject.GetComponent<WobbleMovement>();
     }
     void Update()
     {
-        CheckWorldBounds();
+        //CheckWorldBounds();
         if(transform.childCount == 1)
         {
             foreach(Transform star in transform)
@@ -47,17 +54,27 @@ public class WobbleGameActions : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // Pick up stars
-        /*
+        
         if (other.gameObject.CompareTag("Star"))
         {
-            if (transform.childCount == 0 && other.transform.parent == null)
+            scoreKeeper.addStar();
+            AudioManager.Play("Score");
+            GameObject.Destroy(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("Pickup"))
+        {
+            if (other.name == "SpeedPickup")
             {
-                other.transform.parent = transform;
-                other.transform.localScale *= 0.75f;
-                other.transform.localPosition = Vector3.up * collider.bounds.extents.y * 1.25f;
+                scoreKeeper.addSpeedMult(1);
+                wobbleMovement.wobbleConstantForce.relativeForce += new Vector3(50, 0, 0);
+                GameObject.Destroy(other.gameObject);
+
+                GameObject aura = (GameObject)Instantiate(SpeedAura, transform.position - new Vector3(0,0.75f,0), SpeedAura.transform.rotation);
+                aura.transform.parent = gameObject.transform;
+                Destroy(aura, 2f);
             }
         }
-         * */
+         
         if(other.gameObject.CompareTag("Death"))
         {
             if(other.name == "water")

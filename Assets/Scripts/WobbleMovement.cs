@@ -10,6 +10,12 @@ public class WobbleMovement : MonoBehaviour
     Vector3 prevPosition;
 
     public GameObject gadgetSpawn;
+    public ConstantForce wobbleConstantForce;
+
+    void Start()
+    {
+        wobbleConstantForce = gameObject.GetComponent<ConstantForce>();
+    }
 
     // Unity functions
     void OnCollisionEnter(Collision collision)
@@ -27,7 +33,7 @@ public class WobbleMovement : MonoBehaviour
                     angle *= Mathf.Rad2Deg;
                     if ((angle > 45f && angle < 135f) || (angle < 315f && angle > 225f))
                     {
-                        SendMessage("DeathWithSmoke");
+                   //     SendMessage("DeathWithSmoke");
                         return;
                     }
                 }
@@ -40,12 +46,13 @@ public class WobbleMovement : MonoBehaviour
         prevVerticalVelocity = rigidbody.velocity.y;
 
         // If not moving forward, give bump to get over obstacle
+        
         if ((transform.position - prevPosition).sqrMagnitude < 0.000025f)
         {
-            rigidbody.AddForce(Vector3.up * (rigidbody.useGravity ? 2f : -2), ForceMode.VelocityChange);
+            rigidbody.AddForce(Vector3.up * (rigidbody.useGravity ? 5f : -2), ForceMode.VelocityChange);
         }
         prevPosition = transform.position;
-
+        
         // Use raycast to turn around if it hits a wall
    //     CheckForWallCollision();
 

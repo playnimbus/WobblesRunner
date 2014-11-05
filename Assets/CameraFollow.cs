@@ -13,7 +13,7 @@ public class CameraFollow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        gameObject.transform.position = new Vector3(FollowGO.transform.position.x + 7, gameObject.transform.position.y, gameObject.transform.position.z);
+        gameObject.transform.position = new Vector3(FollowGO.transform.position.x + 6, gameObject.transform.position.y, gameObject.transform.position.z);
 	
 	}
 }
