@@ -1197,6 +1197,7 @@ GameObject:
   - 4: {fileID: 1117014080}
   - 114: {fileID: 1117014079}
   - 114: {fileID: 1117014081}
+  - 114: {fileID: 1117014082}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1245,6 +1246,17 @@ MonoBehaviour:
   StarsGO: {fileID: 999022470}
   SpeedMultGO: {fileID: 199308083}
   speedMult: 1
+--- !u!114 &1117014082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117014078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d81bf258a580d64d8011370fb547520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1266279682
 GameObject:
   m_ObjectHideFlags: 0
